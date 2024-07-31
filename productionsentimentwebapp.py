@@ -4,15 +4,17 @@ import streamlit as st
 import os
 from time import sleep
 
-#Construct paths relative to the current working directory
-model_path = os.path.join('model_rf.pkl')
-count_vector_path = os.path.join('countVectorizer.pkl')
-scalar_path = os.path.join('scalar.pkl')
+
+# Defining the paths to the model, count vectorizer, and scalar files
+model_path = os.path.join(os.path.dirname(__file__), 'model_rf.pkl')
+vectorizer_path = os.path.join(os.path.dirname(__file__), 'countVectorizer.pkl')
+scalar_path = os.path.join(os.path.dirname(__file__), 'scalar.pkl')
 
 # Loading the saved model, scalar, count vectorizer
-load_model = pickle.load(open('D:\\Deployments\\amazonecho_sentiment_analysis\\model_rf.pkl', 'rb'))
-load_count_vector = pickle.load(open('D:\\Deployments\\amazonecho_sentiment_analysis\\countVectorizer.pkl', 'rb'))
-load_scalar = pickle.load(open('D:\\Deployments\\amazonecho_sentiment_analysis\\scalar.pkl', 'rb'))
+load_model = pickle.load(open(model_path, 'rb'))
+load_count_vector = pickle.load(open(vectorizer_path, 'rb'))
+load_scalar = pickle.load(open(scalar_path, 'rb'))
+
 
 # Creating a function for prediction
 def sentiment_prediction(input_data):
